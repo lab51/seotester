@@ -1,0 +1,18 @@
+<div id="outer" style="width:100%;margin-top:200px;">  
+
+<div style='width:600px;margin-left:auto;margin-right:auto;'>
+<%= form_tag("/raport", method: "post") do %>
+  <%= label_tag('address', 'adres do sprawdzenia') %>
+  <br />
+  <input name='address' id='address' type="text" class='searchbox'>
+  <br />
+  <input name="commit" type="submit" class="btn btn-success btn-lg btn-lg" value="Sprawdź stronę" />
+<% end %>
+</div>
+<div style='width:600px;margin-left:auto;margin-right:auto;margin-top:70px;'>
+<p>Seotester to szybki test, który pozwala na sprawdzenie, jak wypada Twoja witryna pod kątem SEO. Test sprawdza najważniejsze rzeczy, które mają wpływ na pozycje w wyszukiwarkach jak również na liczbę kliknięć. </p>
+<p>
+To tylko automatyczne sprawdzenie twojej witryny. Dokładną optymalizacją muszą zająć się specjaliści, np. z carted.pl ;). Znamy przykłady, gdy czas i wysiłek poświęcony na optymalizację strony odpłacił się wzrostem ruchu o kilkadziesiąt procent. Warto? Jak najbardziej. 
+</p>
+</div>
+</div>

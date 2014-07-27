@@ -1,0 +1,33 @@
+      <div class="page-header">
+        <h2>Nagłówki h1</h2>
+      </div>
+      <% if @h1_msg.present? %>
+		<% if @h1_msg == 1 %>
+      <div class="alert alert-success" role="alert">
+        <strong>Jest jeden nagłówek h1</strong>. Na stronie wykryto jeden nagłówek h1. <a data-toggle="collapse" data-parent="#accordion" href="#collapseH1Ok">(więcej)</a>
+      </div>
+      <div id="collapseH1Ok" class="panel-collapse collapse">
+      <div class="panel-body">
+Znaleźliśmy jeden nagłówek h1. Warto zadbać, by zawierał najważniejsze słowa kluczowe dla danej podstrony. 
+      </div>
+    </div>
+      	<% elsif @h1_msg == 2 %>
+	  <div class="alert alert-info" role="alert">
+        Znalazłem więcej niż jeden nagłówek h1 na stronie. Lepiej jest, gdy stosowany jest jeden nagłówek. <a data-toggle="collapse" data-parent="#accordion" href="#collapseH1More">(zwiń)</a>
+      </div>
+      <div id="collapseH1More" class="panel-collapse collapse in">
+      <div class="panel-body">
+Na stronie jest więcej niż jeden nagłówek h1. Nie jest to krytyczny błąd, ale warto podkreślić tematykę danej podstrony przez stosowanie jednego nagłówka h1, tak by zawierał najważniejsze słowa kluczowe. Nie jest to zmiana, która powinna być wykonana za wszelką cenę. Jeśli jednak możemy łatwo dokonać tej modyfikacji, to zalecane jest by był jeden nagłówek. Dalsze nagłówki, czyli h2, h3 itd. mogą występować już wielokrotnie, powinny być niżej niż h1.
+      </div>
+    </div>
+      	<% elsif @h1_msg == 0 %>
+      <div class="alert alert-danger" role="alert">
+		<strong>Brak nagłówka h1.</strong> Na stronie nie znaleziono nagłówka h1. <a data-toggle="collapse" data-parent="#accordion" href="#collapseH1None">(zwiń)</a>
+      </div>
+      <div id="collapseH1None" class="panel-collapse collapse in">
+      <div class="panel-body">
+Na stronie nie ma nagłówka h1. warto podkreślić tematykę danej podstrony przez stosowanie jednego nagłówka h1, tak by zawierał najważniejsze słowa kluczowe. Nie jest to zmiana, która powinna być wykonana za wszelką cenę. Jeśli jednak możemy łatwo dokonać tej modyfikacji, to zalecane jest by był jeden nagłówek. Dalsze nagłówki, czyli h2, h3 itd. mogą występować już wielokrotnie, powinny być niżej niż h1. 
+      </div>
+    </div>
+        <% end %>      
+      <% end %>

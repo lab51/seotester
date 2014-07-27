@@ -1,0 +1,109 @@
+<div class="jumbotron">
+ Raport dla adresu: <div id='url_data'>http://<%= @show_address %></div>
+<br />Nasza ocena:
+<br />
+<p style='font-size:80px;font-weight:bold;'><font color='#B30740'><%= @final_score['score'] %></font> / 100</p>
+<br />
+<br />
+  <div style='text-align:left;'>
+  Na 100 możliwych punktów w naszym teście, twoja strona <%= @temp_address_to_check %> zdobyła <%= @final_score['score'] %> punktów. Jeśli chcesz, by strona była lepiej dopasowana pod kątem wymagań wyszukiwarek, poniżej rzeczy, które możesz poprawić:
+
+    <%= render 'tips' %>
+  </div>  
+</div>
+<div class="row marketing">
+
+  <%= render 'notice_title' %>
+
+  <%= render 'notice_description' %>
+    
+  <%= render 'notice_h1' %>
+
+  <%= render 'notice_301' %>
+
+  <%= render 'notice_w3' %>
+
+  <%= render 'notice_images' %>
+
+  <%= render 'notice_pagespeed' %>
+
+      <div class="page-header">
+        <h2>Dodatkowe informacje o stronie</h2>
+      </div>
+      
+<table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>nazwa wskaźnika</th>
+                <th>wartość</th>
+                <th>komentarz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>PageRank (PR)</td>
+                <td><%= @page_rank %></td>
+                <td>tak w skali 0-10 ocenia Twoją stronę Google</td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td>Site</td>
+                <td><% if @site %>
+                    <%= @site %>
+                    <% end %>
+                </td>
+                <td>liczba podstron w indeksie Google</td>
+              </tr>
+
+              <tr>
+                <td>3</td>
+                <td>Ranking Alexa</td>
+                <td>
+                <% if @alexa %>
+                <% if @alexa > 0 %>
+                <%= @alexa %>
+                <% else %>
+                -
+                <% end %>
+                <% end %>
+                </td>
+                <td>pozycja według rankingu Alexa.com </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Domain Authority</td>
+                <td><% if @pda %>
+                    <%= @pda.round(2) %>/100 
+                    <% end %>
+                </td>
+                <td>moc całej domeny wg. moz.com (<a href="http://moz.com/researchtools/ose/links?site=<%= @show_address %>">więcej</a>)</td>
+              </tr>
+
+              <tr>
+                <td>5</td>
+                <td>Page Authority</td>
+                <td><% if @upa %>
+                    <%= @upa.round(2) %>/100 
+                    <% end %>
+                </td>
+                <td>moc konkretnej podstrony (<a href="http://moz.com/researchtools/ose/links?site=<%= @show_address %>">więcej</a>)</td>
+              </tr>
+
+              <tr>
+                <td>6</td>
+                <td>Łączna liczba linków</td>
+                <td><% if @uid %>
+                    <%= @uid %>
+                    <% end %>
+                </td>
+                <td>orientacyjna liczba linków wskazujących na Twoją domenę</td>
+              </tr>
+
+          
+            </tbody>
+          </table>
+        
+        

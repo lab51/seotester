@@ -1,0 +1,50 @@
+<ul>
+<% if @final_score['h1_error'] == 1 %>
+<li>zadbaj o to, by na stronie był jeden nagłówek h1</li>
+<% end %>
+
+<% if @final_score['title_error'] == 1 %>
+<li>dostosuj title</li>
+<% end %>
+
+<% if @final_score['desc_error'] == 1 %>
+<li>skróć description</li>
+<% end %>
+
+
+<% if @final_score['robots_error'] == 1 %>
+<li>sprawdz meta robots czy nie blokuje strony</li>
+<% end %>
+
+<% if @final_score['rtxt_error'] == 1 %>
+<li>sprawdź robots.txt czy nie blokuje bota</li>
+<% end %>
+
+<% if @final_score['r301_error'] == 1 %>
+<li>ustaw przekierowanie 301</li>
+<% end %>
+
+<% if @final_score['wildcard_error'] == 1 %>
+<li>sprawdź czy przez wildcarda nie ma błędów</li>
+<% end %>
+
+<% if @final_score['https_error'] == 1 %>
+<li>zadbaj o usunięcie kopii z http/https</li>
+<% end %>
+
+<% if @final_score['w3_error'] == 1 %>
+<li>usuń błędy w kodzie</li>
+<% end %>
+
+<% if @final_score['images_empty_alt_error'] == 1 %>
+<li>uzupełnij alty w obrazkach</li>
+<% end %>
+
+<% if @final_score['images_no_alt_error'] == 1 %>
+<li>dodaj alty do obrazków</li>
+<% end %>
+
+<% if @final_score['page_speed_error'] == 1 %>
+<li>popraw prędkość ładowania strony</li>
+<% end %>
+</ul>

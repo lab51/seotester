@@ -1,0 +1,18 @@
+      <div class="page-header">
+        <h2>Walidacja - błędy na stronie</h2>
+      </div>
+    
+        <% if @w3_results %>      
+      	<% #if @w3_results['w3_errors'] > 0 %>
+        <div class="alert alert-danger" role="alert">
+        <strong>Wykryto błędy (<%= @w3_results['w3_errors'] %>) na stronie</strong>. 
+        </div>
+        Więcej informacji i lista błędów oraz ostrzeżeń znajduje się <a href="<%= @w3_results['info_address'] %>">tutaj</a>.
+        <% else %>
+		<div class="alert alert-success" role="alert">
+        <strong>Brak błędów w kodzie</strong>. 
+        Więcej informacji <a href="<%= @w3_results['info_address'] %>">tutaj</a>.
+        </div>
+        <% end %>
+
+Błędów nie należy usuwać za wszelką cenę - osiąganie dobrych pozycji jest jak najbardziej możliwe nawet jak są błędy w kodzie. Jeśli jednak mamy do czynienia z kilkoma błędami, które łatwo można usunąć, to warto to zrobić. 

@@ -1,0 +1,42 @@
+      <div class="page-header">
+        <h2>Obrazki</h2>
+      </div>
+        <% if @images_no_alt %>
+      	<% no_alt_nr = @images_no_alt.count %>
+		<% if no_alt_nr > 0 %>
+        <div class="alert alert-danger" role="alert">
+        <strong>Wykryto znaczniki images bez altów (<%= no_alt_nr %>) na stronie</strong>. 
+        </div>
+        Przykłady:
+			<% @images_no_alt.each do |f| %>
+			<%= f %>
+			<br />
+			<% end %>
+            <br />
+        <% elsif no_alt_nr == 0 %>
+		<div class="alert alert-success" role="alert">
+        <strong>Wszystkie obrazki mają znaczniki alt</strong>. 
+        </div>
+        <% end %>
+        <% end %>
+
+    <% if @images_empty_alt %>    
+		<% empty_alt_nr = @images_empty_alt.count %>
+		<% if empty_alt_nr > 0 %>
+        <div class="alert alert-danger" role="alert">
+        <strong>Wykryto znaczniki images które mają pusty alt (<%= empty_alt_nr %>) na stronie</strong>. 
+        </div>
+        Przykłady:
+			<% @images_empty_alt.each do |f| %>
+			<%= f %>
+			<br />
+			<% end %>
+            <br />
+        <% elsif empty_alt_nr == 0 %>
+		<div class="alert alert-success" role="alert">
+        <strong>OK, nie ma pustych altów</strong>. 
+        </div>
+        <% end %>
+        <% end %>
+
+<div>Obrazki w kodzie powinny mieć formę &lt;img src="obrazek.jpg" alt="mój pokój" &gt;. Dzięki wypełnionemu parametrowi ALT botowi łatwiej jest poznać zawartość.</div>

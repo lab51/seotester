@@ -1,0 +1,98 @@
+            <div class="page-header">
+        <h2>Przekierowania 301 i sprawdzenie kopii</h2>
+      </div>
+      <% if @r301_msg %>
+      <% if @r301_msg['redirection_301_status'] == 0 %>
+        <div class="alert alert-danger" role="alert">
+          <strong>Nie znaleziono przekierowania 301.</strong> <a data-toggle="collapse" data-parent="#accordion" href="#collapse301NotFound">(zwiń)</a> 
+        </div>
+        <div id="collapse301NotFound" class="panel-collapse collapse in">
+      <div class="panel-body">
+Nie ma przekierowania 301 pomiędzy wersjami www i bez www. Gdy nie ma przekierowania, Google widzi adresy http://mojastrona.pl i http://www.mojastrona.pl jako kopie. Gdy jest ustawione przekierowanie 301, wtedy wie dokładnie, gdzie jest oryginał treści.
+      </div>
+    </div>
+      <% elsif @r301_msg['redirection_301_status'] == 1 %>
+        <div class="alert alert-success" role="alert">
+          <strong>Znakomicie!</strong> Jest przekierowanie na wersje <%= @r301_msg['redirected_to'] %>. <a data-toggle="collapse" data-parent="#accordion" href="#collapse301Ok">(więcej)</a>
+        </div>
+      <div id="collapse301Ok" class="panel-collapse collapse">
+      <div class="panel-body">
+Jest przekierowanie 301 pomiędzy wersjami www i bez www. Gdy nie ma przekierowania, Google widzi adresy http://mojastrona.pl i http://www.mojastrona.pl jako kopie. Gdy jest ustawione przekierowanie 301, wtedy wie dokładnie, gdzie jest oryginał treści. Tu wszsytko jest w porządku.
+      </div>
+    </div>
+      <% end %>  
+      <% if @r301_msg['redirection_302_status'] == 1 %>
+      <div class="alert alert-info" role="alert">
+        Zastosowane jest przekierowanie 302 zamiast 301. <a data-toggle="collapse" data-parent="#accordion" href="#collapse302Found">(zwiń)</a>
+      </div>
+           <div id="collapse302Found" class="panel-collapse collapse in">
+      <div class="panel-body">
+Zastosowane przekierowanie 302. Nie przenosi ono mocy i traktowane jest jako przekierowanie czasowe. Zalecane jest stosowanie przekierowania 301. 
+      </div>
+    </div>
+      <% end %>
+      <% end %>
+
+      <% if @https_msg.present? %>
+		<% if @https_msg == 1 %>
+      <div class="alert alert-info" role="alert">
+        <strong>Możliwe kopie wersji http i https.</strong> Wygląda na to, że strona występuje w dwóch wersjach - z http i https. Sprawdź, czy nie tworzą się kopie.<a data-toggle="collapse" data-parent="#accordion" href="#collapseHttps">(zwiń)</a>   
+      </div>
+      <div id="collapseHttps" class="panel-collapse collapse in">
+      <div class="panel-body">
+Zdarza się, że strona występuje pod dwoma adresami  na raz, https://adres.pl i http://adres.pl. Zalecane jest stosowanie jednego adresu, ewentualnie można użyć na drugim canonicala.
+      </div>
+    </div>
+      	<% else %>
+	  <div class="alert alert-success" role="alert">
+        Nie ma kopii na wersji https/http.
+      </div>
+        <% end %>      
+      <% end %>
+
+      <% if @wildcard_msg.present? %>
+		<% if @wildcard_msg == 1 %>
+      <div class="alert alert-danger" role="alert">
+        <strong>Włączony wildcard</strong>. Prawdopodobnie na hostignu włączony jest wildcard. Może to tworzyć kopie strony głównej.
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseWildOn">(zwiń)</a>  
+      </div>
+      <div id="collapseWildOn" class="panel-collapse collapse in">
+      <div class="panel-body">
+Sprawdź, czy wpisując różne losowe adresy subdomen jak http://test1.mojadomena.pl, http://test2.mojadomena.pl itp. otwierają się strony. Jeśli tak, to prawdopodobnie na hostingu włączona jest usługa wildcard. Trzeba się skontaktować z obsługą hostingu i poprosić o wyłączenie usługi wildcard. <a href="http://www.pomocnikwebmastera.pl/tag/wildcard/">Tu więcej o wildcard</a>.
+      </div>
+    </div>
+      	<% else %>
+	  <div class="alert alert-success" role="alert">
+      	<strong>Znakomicie!</strong> Wildcard na hostingu jest wyłączony (<a href="http://www.pomocnikwebmastera.pl/tag/wildcard/">tu więcej o wildcard</a>).
+      </div>
+        <% end %>      
+      <% end %>
+
+      <% if @robots_msg.present? %>
+      <div class="page-header">
+        <h2>meta robots</h2>
+      </div>
+        <% if @robots_msg == 1 %>
+        <div class="alert alert-danger" role="alert">
+        <strong>Noindex w meta robots!</strong>. To blokuje bota. Zmień 'noindex' na 'index' w tagu robots.
+        </div>
+        <% else %>
+		<div class="alert alert-success" role="alert">
+        <strong>Meta tag robots poprawny (nie blokuje indeksacji)</strong>. 
+        </div>
+        <% end %>
+      <% end %>
+
+      <div class="page-header">
+        <h2>Robots.txt</h2>
+      </div>
+		<% if @rtxt_msg == 1 %>
+        <div class="alert alert-danger" role="alert">
+        <strong>Możliwa blokada bota google w pliku robots.txt</strong>. Sprawdź czy w robots.txt nie jest blokowany dostęp dla bota google'a. 
+        </div>
+        <% else %>
+		<div class="alert alert-success" role="alert">
+        <strong>Strona nie jest blokowana przed botem w pliku robots.txt</strong>. 
+        </div>
+        <% end %>
+

@@ -1,0 +1,53 @@
+  <div class="page-header">
+        <h2>Description</h2>
+      </div>
+      <% if @desc_msg.present? %>
+  		<% if @desc_msg == 1 %>
+      <div class="alert alert-success" role="alert">
+        <strong>Poprawny tag description</strong>. Twój tag description ma poprawną długość (<%= @desc_chars %> znaków). <a data-toggle="collapse" data-parent="#accordion" href="#collapseDescOk">(więcej)</a>
+      </div>
+            <div id="collapseDescOk" class="panel-collapse collapse">
+      <div class="panel-body">
+Obecnie twój description to: <%= @description_full %>
+        
+        <br />Twój opis description jest w porządku. Samo description nie jest brane pod uwagę przy ocenie strony. Dlaczego jest ważne? Dobry opis description pomoże w zachęceniu użytkownika do kliknięcia. Dlatego warto o to zadbać.
+      </div>
+    </div>
+      	<% elsif @desc_msg == 2 %>
+	  <div class="alert alert-danger" role="alert">
+        <strong>Za długi description.</strong> Twój tag description jest za długi (ma <%= @desc_chars %> znaków). <a data-toggle="collapse" data-parent="#accordion" href="#collapseDescToLong">(zwiń)</a> 
+      </div>
+      <div id="collapseDescToLong" class="panel-collapse collapse in">
+      <div class="panel-body">
+
+      Obecnie twój description to: <%= @description %>
+        <br />
+Opis description na stronie jest za długi. Co to oznacza? Po prostu będzie ucinany i nie będzie pokazany w całości w wynikach wyszukiwania, przykład:
+
+DAJ JPG
+<br />      
+Warto skrócić opis, tak by był pokazywany w całości.<br />      
+
+Samo description nie jest brane pod uwagę przy ocenie strony. Dlaczego jest ważne? Dobry opis description pomoże w zachęceniu użytkownika do kliknięcia. Dlatego warto o to zadbać.
+      </div>
+    </div><% elsif @desc_msg == 0 %>
+      <div class="alert alert-danger" role="alert">
+		<strong>Pusty description!</strong> Description jest w kodzie ale jest pusty. <a data-toggle="collapse" data-parent="#accordion" href="#collapseDescEmpty">(zwiń)</a> 
+      </div>
+    <div id="collapseDescEmpty" class="panel-collapse collapse in">
+      <div class="panel-body">
+Znaleźliśmy meta tag description w kodzie, ale jest on pusty. Warto go uzupełnić. Samo description nie jest brane pod uwagę przy ocenie strony. Dlaczego jest ważne? Dobry opis description pomoże w zachęceniu użytkownika do kliknięcia. Dlatego warto o to zadbać.
+      </div>
+    </div>  
+        <% end %>      
+      <% end %>
+    <% if @meta_errors == 3 %>
+      <div class="alert alert-danger" role="alert">
+    <strong>Brak description!</strong> Prawdopodobnie nie ma description. <a data-toggle="collapse" data-parent="#accordion" href="#collapseDescNotFound">(zwiń)</a>
+    <div id="collapseDescNotFound" class="panel-collapse collapse in">
+      <div class="panel-body">
+Nie znaleźliśmy w kodzie zdefiniowanego opisu description. To nie koniec świata. Google postara się dopasować description na podstawie zawartości strony. Poza tym samo description nie jest brane pod uwagę przy ocenie strony. Dlaczego jest ważne? Dobry opis description pomoże w zachęceniu użytkownika do kliknięcia. Dlatego warto o to zadbać. 
+      </div>
+    </div>
+      </div>
+        <% end %>      

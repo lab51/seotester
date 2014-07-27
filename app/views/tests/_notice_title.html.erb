@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h2>Title</h2>
+      </div>
+      <% if @title_msg.present? %>
+		<% if @title_msg == 1 %>
+      <div class="alert alert-success" role="alert">
+        <strong>Title jest ok</strong>. Twój title ma poprawną długość (<%= @title_chars %> znaków). <a data-toggle="collapse" data-parent="#accordion" href="#collapseTitle">(więcej)</a>
+      </div>
+      <div id="collapseTitle" class="panel-collapse collapse">
+      <div class="panel-body">
+Wygląda na to, że z title jest wszystko w porządku. Title powinien mieć do 75 znaków długości. Dlaczego? Bo od pewnej długości Google ucina tytuł. Kiedyś ucinał po określonej liczbie znaków, teraz to się zmienia. Nadal jednak umowna liczba to 75. Więcej dowiesz się <a rel="nofollow" href="http://moz.com/blog/new-title-tag-guidelines-preview-tool">tutaj</a>.
+<br />
+Co się stanie jeśli title będzie dłuższy? Nic strasznego. Czasem zależy nam, by zmieścić ważne słowa kluczowe w title i siłą rzeczy jest dłuższy. Wtedy nawet jak w wynikach nie pokaże całego title, to robot zczyta sobie całość i zauważy nasze słowa. To dlaczego powinien być do 75 znaków? Chodzi o to, by tytuł namawiał do kliknięcia w wynik. Dobrze ułożony tytuł może w tym pomóc. 
+    </div>
+    </div>  
+ 
+      	<% elsif @title_msg == 2 %>
+	  <div class="alert alert-danger" role="alert">
+        <strong>Za długi title.</strong> Twój title jest za długi (ma <%= @title_chars %> znaków). No chyba, że chcesz tam upychać słowa kluczowe? <a data-toggle="collapse" data-parent="#accordion" href="#collapseTitleToLong">(zwiń)</a>
+      </div>
+        <div id="collapseTitleToLong" class="panel-collapse collapse in">
+      <div class="panel-body">
+Wygląda na to, że twój title jest za długi. Warto rozważyć jego skrócenie. Title powinien mieć do 75 znaków długości. Dlaczego? Bo od pewnej długości Google ucina tytuł. Kiedyś ucinał po określonej liczbie znaków, teraz to się zmienia. Nadal jednak umowna liczba to 75. Więcej dowiesz się <a rel="nofollow" href="http://moz.com/blog/new-title-tag-guidelines-preview-tool">tutaj</a>.
+<br />
+Co się stanie jeśli title będzie dłuższy? Nic strasznego. Czasem zależy nam, by zmieścić ważne słowa kluczowe w title i siłą rzeczy jest dłuższy. Wtedy nawet jak w wynikach nie pokaże całego title, to robot sczyta sobie całość i zauważy nasze słowa. To dlaczego powinien być do 75 znaków? Chodzi o to, by tytuł namawiał do kliknięcia w wynik. Dobrze ułożony tytuł może w tym pomóc.
+     </div>
+    </div>  
+
+      	<% elsif @title_msg == 0 %>
+      <div class="alert alert-danger" role="alert">
+		<strong>Brak title!</strong> Nie masz title? <a data-toggle="collapse" data-parent="#accordion" href="#collapseTitleNotFound">(zwiń)</a>
+      </div>
+        <div id="collapseTitleNotFound" class="panel-collapse collapse in">
+      <div class="panel-body">
+Czy masz zdefiniowany title w kodzie? Wyszukaj w źródle tagu '<title>'. Jeśli go nie ma, to należy koniecznie go dodać. Jeśli jest, ale jest pusty to znaczy ma postać '<title></title>', to trzeba dodać zawartość np. '<title>Tytuł mojej strony</title>'.
+      </div>
+    </div>
+  
+        <% end %>      
+      <% end %>
