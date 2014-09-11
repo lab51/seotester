@@ -1,28 +1,14 @@
-== README
+SEOtester - online at http://seotest.carted.pl.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Written for my friends - they are creating a site at carted.pl and they needed a tool to do a quick SEO test. 
 
-Things you may want to cover:
+This tool checks things like:
 
-* Ruby version
+- title length
+- number of H1 tags
+- redirections status
+- page speed
+- page rank 
+- and other things related to SEO 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+It does not use a database. In the end SEOtester prints score and recommendations.
